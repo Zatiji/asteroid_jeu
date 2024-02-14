@@ -6,8 +6,6 @@ using namespace std;
 
 int main() {
     sf::RenderWindow fenetre{sf::VideoMode{800,600}, "Asteroid"};
-    auto cercle = sf::CircleShape{100};
-    cercle.setFillColor(sf::Color{128, 255, 128});
     auto vaisseau = Vaisseau{};
     while(fenetre.isOpen()) {
         auto evenement = sf::Event();
@@ -20,8 +18,7 @@ int main() {
             }
         }
 
-        fenetre.clear(sf::Color::Blue);
-        fenetre.draw(cercle);
+        fenetre.clear(sf::Color::Black);
         vaisseau.afficher(fenetre);
         fenetre.display();
     }

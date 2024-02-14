@@ -5,11 +5,14 @@
 
 class Vaisseau {
     public:
+    Vaisseau(sf::Color couleur = sf::Color::White);
+
     void avancer();
     void afficher(sf::RenderWindow &fenetre);
 
     private:
-    sf::CircleShape cercle{30};
+    sf::Texture texture{};
+    sf::Sprite sprite{};
 };
 
 
