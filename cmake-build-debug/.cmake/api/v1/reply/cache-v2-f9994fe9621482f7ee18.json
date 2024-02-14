@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu/cmake-build-debug"
+			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu"
+			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1459,7 +1459,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu/cmake-build-debug"
+			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug"
 		},
 		{
 			"name" : "asteroidJeu_IS_TOP_LEVEL",
@@ -1483,7 +1483,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu"
+			"value" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu"
 		}
 	],
 	"kind" : "cache",

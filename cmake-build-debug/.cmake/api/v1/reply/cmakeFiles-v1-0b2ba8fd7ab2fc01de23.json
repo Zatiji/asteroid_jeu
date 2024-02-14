@@ -153,8 +153,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu/cmake-build-debug",
-		"source" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu"
+		"build" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug",
+		"source" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu"
 	},
 	"version" : 
 	{

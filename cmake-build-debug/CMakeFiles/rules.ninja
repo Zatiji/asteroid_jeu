@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake --regenerate-during-build -S/Users/davidmosquera/programmation/C++/Projets/asteroidJeu -B/Users/davidmosquera/programmation/C++/Projets/asteroidJeu/cmake-build-debug
+  command = /Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake --regenerate-during-build -S/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu -B/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 

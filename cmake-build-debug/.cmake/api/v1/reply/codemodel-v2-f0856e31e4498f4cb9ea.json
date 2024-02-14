@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "asteroidJeu::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-asteroidJeu-Debug-aee2a0e6da55559bd3ae.json",
+					"jsonFile" : "target-asteroidJeu-Debug-ee5446ea76403ca5682b.json",
 					"name" : "asteroidJeu",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu/cmake-build-debug",
-		"source" : "/Users/davidmosquera/programmation/C++/Projets/asteroidJeu"
+		"build" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug",
+		"source" : "/Users/davidmosquera/programmation/C++/Projets/asteroid_jeu"
 	},
 	"version" : 
 	{

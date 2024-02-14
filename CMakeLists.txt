@@ -3,8 +3,11 @@ project(asteroidJeu)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
-set(SOURCE_FILES main.cpp)
-add_executable(asteroidJeu ${SOURCE_FILES})
+set(SOURCE_FILES "Cpp files/main.cpp"
+        "Header Files/vaisseau.h"
+        "Cpp files/vaisseau.cpp")
+add_executable(asteroidJeu ${SOURCE_FILES}
+        "Cpp files/vaisseau.cpp")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)
