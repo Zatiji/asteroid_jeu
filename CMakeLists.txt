@@ -5,9 +5,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 set(SOURCE_FILES "Cpp files/main.cpp"
         "Header Files/vaisseau.h"
-        "Cpp files/vaisseau.cpp")
+        "Cpp files/vaisseau.cpp"
+        "Header Files/Vecteur.h"
+        "Header Files/Vecteur.h"
+        "Cpp files/Vecteur.cpp")
 add_executable(asteroidJeu ${SOURCE_FILES}
-        "Cpp files/vaisseau.cpp")
+        "Cpp files/vaisseau.cpp"
+        "Header Files/Vecteur.h"
+        "Cpp files/Vecteur.cpp")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)

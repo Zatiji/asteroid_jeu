@@ -1,5 +1,5 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/x64/ninja -G Ninja -S /Users/davidmosquera/programmation/C++/Projets/asteroid_jeu -B /Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug
 -- Found SFML .. in /usr/local/include
--- Configuring done (0.1s)
+-- Configuring done (0.2s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/cmake-build-debug
