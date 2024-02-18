@@ -8,11 +8,21 @@ set(SOURCE_FILES "Cpp files/main.cpp"
         "Cpp files/vaisseau.cpp"
         "Header Files/Vecteur.h"
         "Header Files/Vecteur.h"
-        "Cpp files/Vecteur.cpp")
+        "Cpp files/Vecteur.cpp"
+        "Cpp files/Coordonnees.cpp"
+        "Header Files/Coordonnees.h"
+        "Cpp files/Coordonnees.cpp"
+        "Cpp files/Coordonnees.cpp"
+        "Cpp files/Coordonnees.cpp")
 add_executable(asteroidJeu ${SOURCE_FILES}
         "Cpp files/vaisseau.cpp"
         "Header Files/Vecteur.h"
-        "Cpp files/Vecteur.cpp")
+        "Cpp files/Vecteur.cpp"
+        "Cpp files/Coordonnees.cpp"
+        "Header Files/Coordonnees.h"
+        "Cpp files/Coordonnees.cpp"
+        "Cpp files/Coordonnees.cpp"
+        "Cpp files/Coordonnees.cpp")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)
