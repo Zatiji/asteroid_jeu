@@ -5,9 +5,12 @@
 
 using namespace std;
 
+const int HAUTEUR_FENETRE = 600;
+const int LONGUEUR_FENETRE = 800;
+
 int main() {
-    sf::RenderWindow fenetre{sf::VideoMode{800,600}, "Asteroid"};
-    Coordonnees::initialiserEspace(800, 600);
+sf::RenderWindow fenetre{sf::VideoMode{LONGUEUR_FENETRE,HAUTEUR_FENETRE}, "Asteroid"};
+    Coordonnees::initialiserEspace(LONGUEUR_FENETRE,HAUTEUR_FENETRE);
     auto vaisseau = Vaisseau{};
     auto chrono = sf::Clock{};
     while(fenetre.isOpen()) {

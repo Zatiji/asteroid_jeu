@@ -14,7 +14,6 @@ Coordonnees::Coordonnees(float px, float py) {
     x = px;
     y = py;
     Coordonnees::recalculer();
-    std::cout << x << "," << y << std::endl;
 }
 
 void Coordonnees::operator+=(const Vecteur &vecteur) {
