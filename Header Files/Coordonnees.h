@@ -6,9 +6,9 @@
 class Coordonnees {
     public:
         // méthode statique, car l'espace sera le même pour tous les objets de cette classe
-        static void initialiserEspace(int &longueur, int &hauteur);
-        Coordonnees();
-        Coordonnees(float px, float py);
+        static void initialiserEspace(int const &longueur, int const &hauteur);
+        // Coordonnees();
+        Coordonnees(float px = longueurEspace/2.f, float py = hauteurEspace/2.f);
 
         // inline pour meilleur performance du code
         inline float getX() const {return x;};
@@ -17,9 +17,9 @@ class Coordonnees {
         void operator+=(Vecteur const &vecteur);
 
     private:
-        void recalculer(); //--------------
-        float x{longueurEspace/2.f}; //-------------
-        float y{hauteurEspace/2.f}; //--------------
+        void recalculer();
+        float x{0};
+        float y{0};
 
         // ces variables sont statqiue, partagées dans toutes les objets de cette classe
         static int longueurEspace;

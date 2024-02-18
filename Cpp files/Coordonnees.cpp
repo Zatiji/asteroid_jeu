@@ -4,23 +4,26 @@
 int Coordonnees::longueurEspace{0};
 int Coordonnees::hauteurEspace{0};
 
-// Constructeur facultatif, mais on envoie un message d'erreur si une coordonnée est créé avant l'initialisation de l'espace
-Coordonnees::Coordonnees() {
+
+
+Coordonnees::Coordonnees(float px, float py) {
+    // On envoie un message d'erreur si une coordonnée est créé avant l'initialisation de l'espace
     if(longueurEspace == 0 || hauteurEspace == 0) {
         std::cerr << "ATTENTION: une coordonnée a été créée avant l'initialisation de l'espace!" << std::endl;
     }
-}
-
-Coordonnees::Coordonnees(float px, float py) : x(px), y(py){
-    recalculer();
+    x = px;
+    y = py;
+    Coordonnees::recalculer();
+    std::cout << x << "," << y << std::endl;
 }
 
 void Coordonnees::operator+=(const Vecteur &vecteur) {
     x += vecteur.x;
     y += vecteur.y;
+    Coordonnees::recalculer();
 }
 
-void Coordonnees::initialiserEspace(int &longueur, int &hauteur) {
+void Coordonnees::initialiserEspace(int const &longueur, int const &hauteur) {
     // On envoie un message d'erreur si l'espace était déja initialisé
     if(longueurEspace != 0 || hauteurEspace != 0) {
         std::cerr << "ATTENTION: l'espace était déja défini" << std::endl;

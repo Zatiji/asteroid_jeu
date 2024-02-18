@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../Header Files/Vecteur.h"
+#include "../Header Files/Coordonnees.h"
 
 class Vaisseau {
     public:
@@ -13,6 +14,7 @@ class Vaisseau {
     void afficher(sf::RenderWindow &fenetre) const;
 
     private:
+    Coordonnees position{};
     sf::Texture texture{};
     sf::Sprite sprite{};
     Vecteur vitesse{0.f, 0.f};

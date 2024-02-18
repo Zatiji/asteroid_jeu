@@ -1,5 +1,6 @@
 #include "../Header Files/vaisseau.h"
 #include <iostream>
+# include "../Header Files/Coordonnees.h"
 
 //constructeur
 Vaisseau::Vaisseau(sf::Color const couleur) {
@@ -11,7 +12,7 @@ Vaisseau::Vaisseau(sf::Color const couleur) {
     sprite.setTexture(texture);
     sprite.setColor(couleur);
     sprite.setOrigin((sprite.getLocalBounds().width)/2, (sprite.getLocalBounds().height)/2);
-    sprite.setPosition(50, 50);
+    sprite.setPosition(position.getX(), position.getY());
 }
 
 void Vaisseau::actualiserEtat() {
@@ -28,7 +29,8 @@ void Vaisseau::mettreAJour(const float &temps) {
     }
     vitesse -= vitesse*COEFF_FROTTEMENT*temps;
     auto deplacement = vitesse*temps;
-    sprite.move(deplacement.x, deplacement.y);
+    position += deplacement;
+    sprite.setPosition(position.getX(), position.getY());
 
     // Pour faire tourner le vaisseau
     if(tourneDroite) {
