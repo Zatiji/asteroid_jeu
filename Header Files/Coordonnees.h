@@ -13,6 +13,8 @@ class Coordonnees {
         // inline pour meilleur performance du code
         inline float getX() const {return x;};
         inline float getY() const {return y;};
+        static float getLongueurEspace() {return longueurEspace;};
+        static float getHauteurEspace() {return hauteurEspace;};
 
         void operator+=(Vecteur const &vecteur);
 

@@ -3,16 +3,8 @@
 # include "../Header Files/Coordonnees.h"
 
 //constructeur
-Vaisseau::Vaisseau(sf::Color const couleur) {
-    if (!texture.loadFromFile("../images/vaisseau.png")) {
-        std::cerr << "L'image du vaisseau n'a pas été trouvé dans le directory" << std::endl;
-    }
-
-    // Paramètres du sprite
-    sprite.setTexture(texture);
+Vaisseau::Vaisseau(sf::Color const couleur) : ElementEspace{"../images/vaisseau.png"} {
     sprite.setColor(couleur);
-    sprite.setOrigin((sprite.getLocalBounds().width)/2, (sprite.getLocalBounds().height)/2);
-    sprite.setPosition(position.getX(), position.getY());
 }
 
 void Vaisseau::actualiserEtat() {
@@ -20,7 +12,6 @@ void Vaisseau::actualiserEtat() {
     tourneGauche = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
     tourneDroite = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 }
-
 void Vaisseau::mettreAJour(const float &temps) {
 
     // Pour faire accélerer le vaisseau
@@ -28,9 +19,9 @@ void Vaisseau::mettreAJour(const float &temps) {
         vitesse += Vecteur::creerDepuisAngle(ACCELERATION*temps, sprite.getRotation());
     }
     vitesse -= vitesse*COEFF_FROTTEMENT*temps;
-    auto deplacement = vitesse*temps;
-    position += deplacement;
-    sprite.setPosition(position.getX(), position.getY());
+
+    //on rappelle l'lagorithme de déplacement, définie dans la classe mère
+    ElementEspace::mettreAJour(temps);
 
     // Pour faire tourner le vaisseau
     if(tourneDroite) {
@@ -39,8 +30,4 @@ void Vaisseau::mettreAJour(const float &temps) {
     if (tourneGauche) {
         sprite.rotate(-VITESSE_ANGULAIRE*temps);
     }
-}
-
-void Vaisseau::afficher(sf::RenderWindow &fenetre) const {
-    fenetre.draw(sprite);
 }

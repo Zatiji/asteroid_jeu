@@ -77,6 +77,20 @@ build CMakeFiles/asteroidJeu.dir/Cpp_files/Coordonnees.cpp.o: CXX_COMPILER__aste
   OBJECT_DIR = CMakeFiles/asteroidJeu.dir
   OBJECT_FILE_DIR = CMakeFiles/asteroidJeu.dir/Cpp_files
 
+build CMakeFiles/asteroidJeu.dir/Cpp_files/Asteroid.cpp.o: CXX_COMPILER__asteroidJeu_unscanned_Debug /Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/Cpp$ files/Asteroid.cpp || cmake_object_order_depends_target_asteroidJeu
+  DEP_FILE = CMakeFiles/asteroidJeu.dir/Cpp_files/Asteroid.cpp.o.d
+  FLAGS = -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include
+  OBJECT_DIR = CMakeFiles/asteroidJeu.dir
+  OBJECT_FILE_DIR = CMakeFiles/asteroidJeu.dir/Cpp_files
+
+build CMakeFiles/asteroidJeu.dir/Cpp_files/elementEspace.cpp.o: CXX_COMPILER__asteroidJeu_unscanned_Debug /Users/davidmosquera/programmation/C++/Projets/asteroid_jeu/Cpp$ files/elementEspace.cpp || cmake_object_order_depends_target_asteroidJeu
+  DEP_FILE = CMakeFiles/asteroidJeu.dir/Cpp_files/elementEspace.cpp.o.d
+  FLAGS = -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include
+  OBJECT_DIR = CMakeFiles/asteroidJeu.dir
+  OBJECT_FILE_DIR = CMakeFiles/asteroidJeu.dir/Cpp_files
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target asteroidJeu
@@ -85,7 +99,7 @@ build CMakeFiles/asteroidJeu.dir/Cpp_files/Coordonnees.cpp.o: CXX_COMPILER__aste
 #############################################
 # Link the executable asteroidJeu
 
-build asteroidJeu: CXX_EXECUTABLE_LINKER__asteroidJeu_Debug CMakeFiles/asteroidJeu.dir/Cpp_files/main.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/vaisseau.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/Vecteur.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/Coordonnees.cpp.o | /usr/local/lib/libsfml-system.dylib /usr/local/lib/libsfml-window.dylib /usr/local/lib/libsfml-graphics.dylib /usr/local/lib/libsfml-network.dylib /usr/local/lib/libsfml-audio.dylib
+build asteroidJeu: CXX_EXECUTABLE_LINKER__asteroidJeu_Debug CMakeFiles/asteroidJeu.dir/Cpp_files/main.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/vaisseau.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/Vecteur.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/Coordonnees.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/Asteroid.cpp.o CMakeFiles/asteroidJeu.dir/Cpp_files/elementEspace.cpp.o | /usr/local/lib/libsfml-system.dylib /usr/local/lib/libsfml-window.dylib /usr/local/lib/libsfml-graphics.dylib /usr/local/lib/libsfml-network.dylib /usr/local/lib/libsfml-audio.dylib
   FLAGS = -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   LINK_LIBRARIES = /usr/local/lib/libsfml-system.dylib  /usr/local/lib/libsfml-window.dylib  /usr/local/lib/libsfml-graphics.dylib  /usr/local/lib/libsfml-network.dylib  /usr/local/lib/libsfml-audio.dylib
   OBJECT_DIR = CMakeFiles/asteroidJeu.dir
