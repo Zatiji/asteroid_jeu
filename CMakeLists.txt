@@ -17,7 +17,8 @@ set(SOURCE_FILES "Cpp files/main.cpp"
         "Cpp files/Asteroid.cpp"
         "Header Files/Asteroid.h"
         "Header Files/elementEspace.h"
-        "Cpp files/elementEspace.cpp")
+        "Cpp files/elementEspace.cpp"
+        "Cpp files/Explosion.cpp")
 add_executable(asteroidJeu ${SOURCE_FILES}
         "Cpp files/vaisseau.cpp"
         "Header Files/Vecteur.h"
@@ -30,7 +31,8 @@ add_executable(asteroidJeu ${SOURCE_FILES}
         "Cpp files/Asteroid.cpp"
         "Header Files/Asteroid.h"
         "Header Files/elementEspace.h"
-        "Cpp files/elementEspace.cpp")
+        "Cpp files/elementEspace.cpp"
+        "Cpp files/Explosion.cpp")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)

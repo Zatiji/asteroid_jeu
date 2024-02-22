@@ -1,5 +1,7 @@
 #include "../Header Files/Coordonnees.h"
 #include <iostream>
+#include <cmath>
+#include <algorithm>
 
 int Coordonnees::longueurEspace{0};
 int Coordonnees::hauteurEspace{0};
@@ -44,5 +46,11 @@ void Coordonnees::recalculer() {
     while(y > float(hauteurEspace)) {
         y -= float(hauteurEspace);
     }
+}
+
+float Coordonnees::calculerDistance(const Coordonnees &autre) const {
+    auto delta = Vecteur{std::min({abs(x - autre.x), abs(x-autre.x-longueurEspace), abs(x-autre.x+longueurEspace)}),
+                         std::min({abs(y - autre.y), abs(y - autre.y - longueurEspace), abs(y - autre.y + longueurEspace)})};
+    return sqrt(delta.x*delta.x + delta.y*delta.y);
 }
 

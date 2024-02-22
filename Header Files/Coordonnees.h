@@ -7,7 +7,6 @@ class Coordonnees {
     public:
         // méthode statique, car l'espace sera le même pour tous les objets de cette classe
         static void initialiserEspace(int const &longueur, int const &hauteur);
-        // Coordonnees();
         Coordonnees(float px = longueurEspace/2.f, float py = hauteurEspace/2.f);
 
         // inline pour meilleur performance du code
@@ -17,6 +16,7 @@ class Coordonnees {
         static float getHauteurEspace() {return hauteurEspace;};
 
         void operator+=(Vecteur const &vecteur);
+        float calculerDistance(Coordonnees const &autre) const;
 
     private:
         void recalculer();

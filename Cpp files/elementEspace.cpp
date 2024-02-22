@@ -29,10 +29,26 @@ void ElementEspace::afficher(sf::RenderWindow &fenetre) const {
     }
 }
 
-void ElementEspace::mettreAJour(const float &temps) {
-
+void ElementEspace::actualiser(float &temps){
+    mettreAJour(temps);
     // Pour faire accélerer le vaisseau
     auto deplacement = vitesse*temps;
     position += deplacement;
     sprite.setPosition(position.getX(), position.getY());
+    sprite.rotate(vitesseAngulaire*temps);
+}
+
+float ElementEspace::getRayon() {
+    return sprite.getLocalBounds().height/2.f;
+}
+
+void ElementEspace::testerCollision(ElementEspace &autre) {
+    auto distance = position.calculerDistance(autre.position);
+    if(distance < getRayon() + autre.getRayon()) {
+        reagirCollision();
+    }
+}
+
+void ElementEspace::mettreAJour(float const &temps) {
+
 }

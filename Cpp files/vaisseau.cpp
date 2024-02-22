@@ -13,21 +13,39 @@ void Vaisseau::actualiserEtat() {
     tourneDroite = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 }
 void Vaisseau::mettreAJour(const float &temps) {
+    if(!detruit) {
+        // Pour faire accélerer le vaisseau
+        if(accelerationEnCours) {
+            vitesse += Vecteur::creerDepuisAngle(ACCELERATION*temps, sprite.getRotation());
+        }
+        vitesse -= vitesse*COEFF_FROTTEMENT*temps;
 
-    // Pour faire accélerer le vaisseau
-    if(accelerationEnCours) {
-        vitesse += Vecteur::creerDepuisAngle(ACCELERATION*temps, sprite.getRotation());
+        // Pour faire tourner le vaisseau
+        if(tourneDroite) {
+            vitesseAngulaire = VITESSE_ANGULAIRE;
+        } else if (tourneGauche) {
+            vitesseAngulaire = -VITESSE_ANGULAIRE;
+        } else {
+            vitesseAngulaire = 0;
+        }
     }
-    vitesse -= vitesse*COEFF_FROTTEMENT*temps;
-
     //on rappelle l'lagorithme de déplacement, définie dans la classe mère
     ElementEspace::mettreAJour(temps);
+}
 
-    // Pour faire tourner le vaisseau
-    if(tourneDroite) {
-        sprite.rotate(VITESSE_ANGULAIRE*temps);
+void Vaisseau::reagirCollision() {
+    if(!detruit) {
+        detruit = true;
+        explosion.demarrer(position);
     }
-    if (tourneGauche) {
-        sprite.rotate(-VITESSE_ANGULAIRE*temps);
+}
+
+void Vaisseau::afficher(sf::RenderWindow &fenetre) const {
+    if(!detruit) {
+        // on affiche le vaisseau par "default mode"
+        ElementEspace::afficher(fenetre);
+    } else {
+        // on affiche avec la version override de vaisseau pour changer de sprite
+        explosion.afficher(fenetre);
     }
 }
