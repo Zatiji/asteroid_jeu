@@ -30,7 +30,7 @@ void Vaisseau::mettreAJour(const float &temps) {
         }
     }
     //on rappelle l'lagorithme de déplacement, définie dans la classe mère
-    ElementEspace::mettreAJour(temps);
+    explosion.actualiser(temps);
 }
 
 void Vaisseau::reagirCollision() {

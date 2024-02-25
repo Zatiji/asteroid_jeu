@@ -1,4 +1,5 @@
 #include "../Header Files/Explosion.h"
+#include <iostream>
 
 Explosion::Explosion() : ElementEspace{"../images/explosion.png"} {
 
@@ -22,6 +23,7 @@ void Explosion::afficher(sf::RenderWindow &fenetre) const {
     if (age < DUREE_VIE) {
         ElementEspace::afficher(fenetre);
     }
+
 }
 
 void Explosion::reagirCollision() {

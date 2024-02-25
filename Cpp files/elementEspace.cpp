@@ -29,7 +29,7 @@ void ElementEspace::afficher(sf::RenderWindow &fenetre) const {
     }
 }
 
-void ElementEspace::actualiser(float &temps){
+void ElementEspace::actualiser(const float &temps){
     mettreAJour(temps);
     // Pour faire accélerer le vaisseau
     auto deplacement = vitesse*temps;
