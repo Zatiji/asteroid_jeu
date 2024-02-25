@@ -6,24 +6,27 @@
 #include "../Header Files/Coordonnees.h"
 #include "../Header Files/elementEspace.h"
 #include "../Header Files/Explosion.h"
+#include "../Header Files/Espace.h"
 
 class Vaisseau : public ElementEspace{
     public:
-        explicit Vaisseau(sf::Color const couleur = sf::Color::White);
-        void actualiserEtat();
+        explicit Vaisseau(Espace& p_espace, sf::Color const couleur = sf::Color::White);
         virtual void reagirCollision() override;
-        virtual void afficher(sf::RenderWindow &fenetre) const override;
+
 
         protected:
             // mettre override après l,appelle d'une fonction de classe fille modifié pour remarquer les erreurs de frappe
             virtual void mettreAJour(const float &temps) override;
 
     private:
+
+        void actualiserEtat();
+
         bool accelerationEnCours{false};
         bool tourneGauche{false};
         bool tourneDroite{false};
-        bool detruit{false};
 
+        Espace& espace;
         Explosion explosion{};
 
         static constexpr float ACCELERATION{900.f};

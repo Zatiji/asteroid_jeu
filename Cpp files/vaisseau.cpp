@@ -1,9 +1,8 @@
 #include "../Header Files/vaisseau.h"
 #include <iostream>
-# include "../Header Files/Coordonnees.h"
 
 //constructeur
-Vaisseau::Vaisseau(sf::Color const couleur) : ElementEspace{"../images/vaisseau.png"} {
+Vaisseau::Vaisseau(Espace& p_espace, sf::Color const couleur) : ElementEspace{"../images/vaisseau.png"}, espace{p_espace} {
     sprite.setColor(couleur);
 }
 
@@ -12,7 +11,11 @@ void Vaisseau::actualiserEtat() {
     tourneGauche = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
     tourneDroite = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 }
+
 void Vaisseau::mettreAJour(const float &temps) {
+
+    Vaisseau::actualiserEtat();
+
     if(!detruit) {
         // Pour faire accélerer le vaisseau
         if(accelerationEnCours) {
@@ -29,23 +32,13 @@ void Vaisseau::mettreAJour(const float &temps) {
             vitesseAngulaire = 0;
         }
     }
-    //on rappelle l'lagorithme de déplacement, définie dans la classe mère
-    explosion.actualiser(temps);
+     //explosion.actualiser(temps);
 }
 
 void Vaisseau::reagirCollision() {
     if(!detruit) {
         detruit = true;
         explosion.demarrer(position);
-    }
-}
-
-void Vaisseau::afficher(sf::RenderWindow &fenetre) const {
-    if(!detruit) {
-        // on affiche le vaisseau par "default mode"
-        ElementEspace::afficher(fenetre);
-    } else {
-        // on affiche avec la version override de vaisseau pour changer de sprite
-        explosion.afficher(fenetre);
+        espace.ajouter(explosion);
     }
 }

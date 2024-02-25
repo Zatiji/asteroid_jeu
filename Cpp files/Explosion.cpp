@@ -16,14 +16,9 @@ void Explosion::mettreAJour(const float &temps) {
     }
     if (age < DUREE_VIE) {
         sprite.setScale(age/DUREE_VIE, age/DUREE_VIE);
+    } else {
+        detruit = true;
     }
-}
-
-void Explosion::afficher(sf::RenderWindow &fenetre) const {
-    if (age < DUREE_VIE) {
-        ElementEspace::afficher(fenetre);
-    }
-
 }
 
 void Explosion::reagirCollision() {

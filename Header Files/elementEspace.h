@@ -18,6 +18,8 @@ class ElementEspace {
         // méthode abstraite: déclaré, mais pas définie, on est alors obligée de re déclarer cette méthode dans les classes filles
         virtual void reagirCollision() = 0;
 
+        static inline bool estDetruit(ElementEspace* element) {return element->detruit;};
+
         float getRayon();
 
     protected:
@@ -27,6 +29,7 @@ class ElementEspace {
         Coordonnees position{};
         Vecteur vitesse{0.f, 0.f};
         float vitesseAngulaire;
+        bool detruit = false;
 };
 
 #endif

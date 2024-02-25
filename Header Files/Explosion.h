@@ -9,7 +9,6 @@ public:
     Explosion();
     void demarrer(Coordonnees const& p_position);
     virtual void reagirCollision() override;
-    virtual void afficher(sf::RenderWindow &fenetre) const override;
 
 protected:
     virtual void mettreAJour(const float &temps) override;
