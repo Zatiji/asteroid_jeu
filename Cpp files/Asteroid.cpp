@@ -4,6 +4,8 @@
 
 //constructeur
 Asteroide::Asteroide() : ElementEspace{"../images/asteroide.png"} {
+    type = TypeElement::ASTEROIDE;
+
     auto generateur = std::random_device{};
     auto distributionPosition = std::uniform_real_distribution<float>{-150, 150};
     auto distributionVitesse = std::uniform_real_distribution<float>{80, 120};
@@ -17,6 +19,6 @@ Asteroide::Asteroide() : ElementEspace{"../images/asteroide.png"} {
     vitesse = {100, 20};
 }
 
-void Asteroide::reagirCollision() {
+void Asteroide::reagirCollision(TypeElement typeAutre) {
 
 }

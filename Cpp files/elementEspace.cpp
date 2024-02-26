@@ -45,7 +45,7 @@ float ElementEspace::getRayon() {
 void ElementEspace::testerCollision(ElementEspace &autre) {
     auto distance = position.calculerDistance(autre.position);
     if(distance < getRayon() + autre.getRayon()) {
-        reagirCollision();
+        reagirCollision(autre.type);
     }
 }
 

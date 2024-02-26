@@ -6,16 +6,14 @@
 
 class Explosion : public ElementEspace {
 public:
-    Explosion();
-    void demarrer(Coordonnees const& p_position);
-    virtual void reagirCollision() override;
+    Explosion(const Coordonnees &p_position);
+    virtual void reagirCollision(TypeElement typeAutre) override;
 
 protected:
     virtual void mettreAJour(const float &temps) override;
 
 
 private:
-    bool demarree{false};
     float age{};
     static constexpr float DUREE_VIE{0.1f};
 

@@ -3,15 +3,14 @@
 
 Espace::Espace() { }
 
-void Espace::ajouter(ElementEspace& element) {
-    elements.push_back(&element);
-    std::cout << "nouvel element" <<std::endl;
+void Espace::ajouter(std::unique_ptr<ElementEspace> element) {
+    elements.push_back(std::move(element));
 }
 
 void Espace::actualiser() {
     auto tempsBoucle = chrono.restart().asSeconds();
-    for (auto* element : elements) {
-        (*element).actualiser(tempsBoucle);
+    for (auto i{0u}; i < elements.size(); ++i) {
+        elements[i]->actualiser(tempsBoucle);
     }
 }
 
@@ -26,7 +25,7 @@ void Espace::gererCollision() {
 }
 
 void Espace::afficher(sf::RenderWindow& fenetre) const {
-    for(auto* element : elements) {
+    for(auto& element : elements) {
         (*element).afficher(fenetre);
     }
 }

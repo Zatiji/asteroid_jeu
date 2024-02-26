@@ -1,9 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../Header Files/vaisseau.h"
+#include <memory>
 #include "../Header Files/Asteroid.h"
-#include <array>
-#include "../Header Files/Espace.h"
 
 using namespace std;
 
@@ -14,10 +13,8 @@ int main() {
 sf::RenderWindow fenetre{sf::VideoMode{LONGUEUR_FENETRE,HAUTEUR_FENETRE}, "Asteroid"};
     Coordonnees::initialiserEspace(LONGUEUR_FENETRE,HAUTEUR_FENETRE);
     auto espace = Espace{};
-    auto vaisseau = Vaisseau{espace};
-    auto asteroide1 = Asteroide{};
-    auto asteroide2 = Asteroide{};
-    auto asteroide3 = Asteroide{};
+
+    auto pointeurVaisseau = std::unique_ptr<ElementEspace>(nullptr);
 
     bool partieDemaree = false;
     while(fenetre.isOpen()) {
@@ -28,10 +25,10 @@ sf::RenderWindow fenetre{sf::VideoMode{LONGUEUR_FENETRE,HAUTEUR_FENETRE}, "Aster
                 fenetre.close();
             }
             if(evenement.type == sf::Event::KeyPressed && !partieDemaree) {
-                espace.ajouter(asteroide3);
-                espace.ajouter(asteroide2);
-                espace.ajouter(asteroide1);
-                espace.ajouter(vaisseau);
+                espace.ajouter(std::make_unique<Vaisseau>(espace, sf::Color::White));
+                espace.ajouter(std::make_unique<Asteroide>());
+                espace.ajouter(std::make_unique<Asteroide>());
+                espace.ajouter(std::make_unique<Asteroide>());
                 partieDemaree = true;
             }
         }

@@ -8,7 +8,7 @@
 class Espace {
     public:
         Espace();
-        void ajouter(ElementEspace& element);
+        void ajouter(std::unique_ptr<ElementEspace> element);
         void actualiser();
         void gererCollision();
         void afficher(sf::RenderWindow& fenetre) const;
@@ -18,7 +18,7 @@ class Espace {
         //ee
 
     private:
-        std::vector<ElementEspace*> elements{};
+        std::vector<std::unique_ptr<ElementEspace>> elements{};
         sf::Clock chrono{};
 };
 #endif //ASTEROIDJEU_ESPACE_H

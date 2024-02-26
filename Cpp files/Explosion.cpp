@@ -1,19 +1,12 @@
 #include "../Header Files/Explosion.h"
 #include <iostream>
 
-Explosion::Explosion() : ElementEspace{"../images/explosion.png"} {
-
-}
-
-void Explosion::demarrer(const Coordonnees &p_position) {
+Explosion::Explosion(const Coordonnees &p_position) : ElementEspace{"../images/explosion.png"} {
     position = p_position;
-    demarree = true;
 }
 
 void Explosion::mettreAJour(const float &temps) {
-    if(demarree) {
         age += temps;
-    }
     if (age < DUREE_VIE) {
         sprite.setScale(age/DUREE_VIE, age/DUREE_VIE);
     } else {
@@ -21,6 +14,6 @@ void Explosion::mettreAJour(const float &temps) {
     }
 }
 
-void Explosion::reagirCollision() {
+void Explosion::reagirCollision(TypeElement typeAutre) {
 
 }

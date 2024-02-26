@@ -11,7 +11,7 @@
 class Vaisseau : public ElementEspace{
     public:
         explicit Vaisseau(Espace& p_espace, sf::Color const couleur = sf::Color::White);
-        virtual void reagirCollision() override;
+        virtual void reagirCollision(TypeElement typeAutre) override;
 
 
         protected:
@@ -26,8 +26,9 @@ class Vaisseau : public ElementEspace{
         bool tourneGauche{false};
         bool tourneDroite{false};
 
+        sf::Clock dernierTir;
+
         Espace& espace;
-        Explosion explosion{};
 
         static constexpr float ACCELERATION{900.f};
         static constexpr float COEFF_FROTTEMENT{2.f};

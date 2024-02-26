@@ -9,7 +9,7 @@
 class Asteroide : public ElementEspace {
     public:
          explicit Asteroide();
-         virtual void reagirCollision() override;
+         virtual void reagirCollision(TypeElement typeAutre) override;
 
     private:
 };
