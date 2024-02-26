@@ -4,7 +4,7 @@
 Espace::Espace() { }
 
 void Espace::ajouter(std::unique_ptr<ElementEspace> element) {
-    elements.push_back(std::move(element));
+    aAjouter.push_back(std::move(element));
 }
 
 void Espace::actualiser() {
@@ -34,4 +34,8 @@ void Espace::afficher(sf::RenderWindow& fenetre) const {
 void Espace::nettoyer() {
     auto finTableau =std::remove_if(std::begin(elements), std::end(elements), ElementEspace::estDetruit);
     elements.erase(finTableau, std::end(elements));
+    for (auto& element : aAjouter) {
+        elements.push_back(std::move(element));
+    }
+    aAjouter.clear();
 }

@@ -26,21 +26,22 @@ sf::RenderWindow fenetre{sf::VideoMode{LONGUEUR_FENETRE,HAUTEUR_FENETRE}, "Aster
             }
             if(evenement.type == sf::Event::KeyPressed && !partieDemaree) {
                 espace.ajouter(std::make_unique<Vaisseau>(espace, sf::Color::White));
-                espace.ajouter(std::make_unique<Asteroide>());
-                espace.ajouter(std::make_unique<Asteroide>());
-                espace.ajouter(std::make_unique<Asteroide>());
+                espace.ajouter(std::make_unique<Asteroide>(espace));
+                espace.ajouter(std::make_unique<Asteroide>(espace));
+                espace.ajouter(std::make_unique<Asteroide>(espace));
                 partieDemaree = true;
             }
         }
 
         espace.actualiser();
         espace.gererCollision();
-        espace.nettoyer();
 
 
         fenetre.clear(sf::Color::Black);
         espace.afficher(fenetre);
         fenetre.display();
+
+        espace.nettoyer();
     }
     return 0;
 }

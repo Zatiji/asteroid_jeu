@@ -20,5 +20,6 @@ class Espace {
     private:
         std::vector<std::unique_ptr<ElementEspace>> elements{};
         sf::Clock chrono{};
+        std::vector<std::unique_ptr<ElementEspace>> aAjouter{};
 };
 #endif //ASTEROIDJEU_ESPACE_H

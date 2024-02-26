@@ -1,15 +1,13 @@
 #include "../Header Files/elementEspace.h"
 #include "../Header Files/Coordonnees.h"
+#include "../Header Files/GestionnaireRessources.h"
 #include <iostream>
 
 //constructeur
 ElementEspace::ElementEspace(std::string_view const &cheminImage) {
-    if (!texture.loadFromFile(cheminImage.data())) {
-        std::cerr << "L'image de " << cheminImage << "n'a pas été trouvé dans le directory" << std::endl;
-    }
 
     // Paramètres du sprite
-    sprite.setTexture(texture);
+    sprite.setTexture(GestionnaireRessources::getRessources(cheminImage));
     sprite.setOrigin((sprite.getLocalBounds().width)/2, (sprite.getLocalBounds().height)/2);
     sprite.setPosition(position.getX(), position.getY());
 }
@@ -39,7 +37,7 @@ void ElementEspace::actualiser(const float &temps){
 }
 
 float ElementEspace::getRayon() {
-    return sprite.getLocalBounds().height/2.f;
+    return sprite.getGlobalBounds().height/2.4;
 }
 
 void ElementEspace::testerCollision(ElementEspace &autre) {
