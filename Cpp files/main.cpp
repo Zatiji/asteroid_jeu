@@ -1,8 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Header Files/vaisseau.h"
-#include "../Header Files/Jeu.h"
 #include <exception>
-#include <iostream>
+
 
 using namespace std;
 

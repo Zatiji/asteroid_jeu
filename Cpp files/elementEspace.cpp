@@ -1,13 +1,13 @@
 #include "../Header Files/elementEspace.h"
-#include "../Header Files/Coordonnees.h"
 #include "../Header Files/GestionnaireRessources.h"
+#include <SFML/Graphics.hpp>
 #include <iostream>
 
 //constructeur
 ElementEspace::ElementEspace(std::string_view const &cheminImage) {
 
     // Paramètres du sprite
-    sprite.setTexture(GestionnaireRessources::getRessources(cheminImage));
+    sprite.setTexture(GestionnaireRessources<sf::Texture>::getRessources(cheminImage));
     sprite.setOrigin((sprite.getLocalBounds().width)/2, (sprite.getLocalBounds().height)/2);
     sprite.setPosition(position.getX(), position.getY());
 }

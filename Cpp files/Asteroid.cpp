@@ -4,7 +4,7 @@
 
 
 //constructeur
-Asteroide::Asteroide(Espace& p_espace, Asteroide* parent) : ElementEspace{"../images/asteroide.png"}, espace{p_espace} {
+Asteroide::Asteroide(Jeu& p_jeu, Espace& p_espace, Asteroide* parent) : ElementEspace{"../images/asteroide.png"}, espace{p_espace}, jeu{p_jeu} {
     type = TypeElement::ASTEROIDE;
 
     auto generateur = std::random_device{};
@@ -29,10 +29,11 @@ Asteroide::Asteroide(Espace& p_espace, Asteroide* parent) : ElementEspace{"../im
 void Asteroide::reagirCollision(TypeElement typeAutre) {
     if(typeAutre == TypeElement::MISSILE) {
         detruit = true;
-        espace.ajouter(std::make_unique<Explosion>(position));
+        jeu.ajouterPoints(sprite.getScale().x * 100);
         if(sprite.getScale().x > 0.1) {
-            espace.ajouter(std::make_unique<Asteroide>(espace, this));
-            espace.ajouter(std::make_unique<Asteroide>(espace, this));
+            espace.ajouter(std::make_unique<Asteroide>(jeu, espace, this));
+            espace.ajouter(std::make_unique<Asteroide>(jeu, espace, this));
         }
+        espace.ajouter(std::make_unique<Explosion>(position));
     }
 }

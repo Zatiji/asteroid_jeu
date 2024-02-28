@@ -13,6 +13,8 @@ class Missile : public ElementEspace {
         //ee
 
     private:
+        sf::SoundBuffer buffer{};
+        sf::Sound son{};
         static constexpr float VITESSE = 2000;
 };
 

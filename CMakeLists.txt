@@ -29,7 +29,7 @@ set(SOURCE_FILES "Cpp files/main.cpp"
         "Cpp files/Jeu.cpp"
         "Header Files/Jeu.h"
         images/font.h
-        "Header Files/ExceptionRessourcesIntrouvables.cpp"
+        "Cpp files/ExceptionRessourcesIntrouvables.cpp"
         "Header Files/ExceptionRessourcesIntrouvables.h")
 add_executable(asteroidJeu ${SOURCE_FILES}
         "Cpp files/vaisseau.cpp"
@@ -55,7 +55,7 @@ add_executable(asteroidJeu ${SOURCE_FILES}
         "Cpp files/Jeu.cpp"
         "Header Files/Jeu.h"
         images/font.h
-        "Header Files/ExceptionRessourcesIntrouvables.cpp"
+        "Cpp files/ExceptionRessourcesIntrouvables.cpp"
         "Header Files/ExceptionRessourcesIntrouvables.h")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")

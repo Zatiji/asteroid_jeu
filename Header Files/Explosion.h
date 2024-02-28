@@ -3,6 +3,7 @@
 
 #include "../Header Files/elementEspace.h"
 #include "../Header Files/Coordonnees.h"
+#include <SFML/Audio.hpp>
 
 class Explosion : public ElementEspace {
 public:
@@ -16,6 +17,7 @@ protected:
 private:
     float age{};
     static constexpr float DUREE_VIE{0.1f};
+    sf::Sound son{};
 
 };
 

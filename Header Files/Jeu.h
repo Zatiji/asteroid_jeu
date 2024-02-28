@@ -13,6 +13,7 @@ class Jeu {
 
         void demarrer();
         void terminer();
+        void ajouterPoints(int points);
         inline bool estEnCours() const { return enCours; };
         void afficher(sf::RenderWindow& fenetre) const;
         void initialiserException(std::exception const& exception);
@@ -20,11 +21,18 @@ class Jeu {
     protected:
 
     private:
+        void rafraichirTexte();
+        void rafraichirMeilleurScore();
+
         Espace& espace;
         bool enCours{false};
         sf::Sprite spriteAccueil{};
         std::unique_ptr<sf::Text> texteException{nullptr};
         sf::Font police{};
+        sf::Text texteScore{};
+        sf::Text texteMeilleurScore{};
+        int score{};
+        int meilleurScore{};
 
 
 };
