@@ -10,7 +10,6 @@ class Jeu {
 
     public:
         Jeu(Espace& p_espace);
-
         void demarrer();
         void terminer();
         void ajouterPoints(int points);
@@ -26,15 +25,13 @@ class Jeu {
 
         Espace& espace;
         bool enCours{false};
-        sf::Sprite spriteAccueil{};
-        std::unique_ptr<sf::Text> texteException{nullptr};
-        sf::Font police{};
-        sf::Text texteScore{};
-        sf::Text texteMeilleurScore{};
         int score{};
         int meilleurScore{};
-
-
+        sf::Text texteScore{};
+        sf::Text texteMeilleurScore{};
+        sf::Sprite spriteAccueil{};
+        sf::Font police{};
+        std::unique_ptr<sf::Text> texteException{nullptr};
 };
 
 

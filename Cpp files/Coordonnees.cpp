@@ -8,20 +8,18 @@ int Coordonnees::hauteurEspace{0};
 
 
 
-Coordonnees::Coordonnees(float px, float py) {
+Coordonnees::Coordonnees(float px, float py) : x(px), y(py){
     // On envoie un message d'erreur si une coordonnée est créé avant l'initialisation de l'espace
     if(longueurEspace == 0 || hauteurEspace == 0) {
         std::cerr << "ATTENTION: une coordonnée a été créée avant l'initialisation de l'espace!" << std::endl;
     }
-    x = px;
-    y = py;
     Coordonnees::recalculer();
 }
 
-void Coordonnees::operator+=(const Vecteur &vecteur) {
+void Coordonnees::operator+=(Vecteur const &vecteur) {
     x += vecteur.x;
     y += vecteur.y;
-    Coordonnees::recalculer();
+    recalculer();
 }
 
 void Coordonnees::initialiserEspace(int const &longueur, int const &hauteur) {

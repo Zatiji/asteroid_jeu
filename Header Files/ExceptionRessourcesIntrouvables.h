@@ -8,7 +8,7 @@
 class ExceptionRessourcesIntrouvables : public std::exception {
     public:
         ExceptionRessourcesIntrouvables(std::string_view const& chemin);
-        virtual const char* what() const noexcept;
+        virtual const char* what() const noexcept override;
 
     private:
         std::string messageErreur{};

@@ -11,29 +11,27 @@
 
 class Vaisseau : public ElementEspace{
     public:
-        explicit Vaisseau(Jeu& p_jeu, Espace& p_espace, sf::Color const couleur = sf::Color::White);
+        explicit Vaisseau(Jeu& p_jeu, Espace& p_espace, sf::Color const& couleur);
         virtual void reagirCollision(TypeElement typeAutre) override;
 
 
         protected:
             // mettre override après l,appelle d'une fonction de classe fille modifié pour remarquer les erreurs de frappe
-            virtual void mettreAJour(const float &temps) override;
+            virtual void mettreAJour(float temps) override;
 
     private:
-
         void actualiserEtat();
 
         bool accelerationEnCours{false};
-        bool tourneGauche{false};
-        bool tourneDroite{false};
+        bool tourneAGauche{false};
+        bool tourneADroite{false};
+
         Jeu& jeu;
-
-        sf::Clock dernierTir;
-
         Espace& espace;
+        sf::Clock dernierTir{};
 
-        static constexpr float ACCELERATION{900.f};
-        static constexpr float COEFF_FROTTEMENT{2.f};
+        static constexpr float ACCELERATION{700.f};
+        static constexpr float COEFF_FROTTEMENTS{2.f};
         static constexpr float VITESSE_ANGULAIRE{100.f};
 };
 

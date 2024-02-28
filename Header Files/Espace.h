@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <memory>
 #include "elementEspace.h"
 
 class Espace {
@@ -10,19 +11,18 @@ class Espace {
         Espace();
         void ajouter(std::unique_ptr<ElementEspace> element);
         void actualiser();
-        void gererCollision();
+        void gererCollisions();
         void afficher(sf::RenderWindow& fenetre) const;
         void nettoyer();
         void vider();
-        inline bool estVide() const { return elements.empty() && aAjouter.empty(); };
+        inline bool estVide() const {return elements.empty() && aAjouter.empty();};
 
     protected:
-        //ee
 
     private:
         std::vector<std::unique_ptr<ElementEspace>> elements{};
-        sf::Clock chrono{};
         std::vector<std::unique_ptr<ElementEspace>> aAjouter{};
-        bool aVider = false;
+        sf::Clock chrono{};
+        bool aVider{false};
 };
 #endif //ASTEROIDJEU_ESPACE_H

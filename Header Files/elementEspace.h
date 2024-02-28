@@ -10,30 +10,26 @@ enum class TypeElement {VAISSEAU, ASTEROIDE, MISSILE, AUTRE};
 class ElementEspace {
     public:
         virtual ~ElementEspace() = default;
-        explicit ElementEspace(std::string_view const &cheminImage);
-        // empêcher les copies d'objets
-        ElementEspace(ElementEspace const &autre) = delete;
-        void operator=(ElementEspace const &autre) = delete;
-        void actualiser(const float &temps);
-        virtual void afficher(sf::RenderWindow &fenetre) const;
-        void testerCollision(ElementEspace &autre);
-        // méthode abstraite: déclaré, mais pas définie, on est alors obligée de re déclarer cette méthode dans les classes filles
+        explicit ElementEspace(std::string_view const&);
+        ElementEspace(ElementEspace const& autre) = delete;
+        void operator=(ElementEspace const& autre) = delete;
+        void actualiser(float temps);
+        virtual void afficher(sf::RenderWindow& fenetre) const;
+
+        inline bool estDetruit() const {return detruit;};
+
+        float getRayon() const;
+        void testerCollision(ElementEspace& autre);
         virtual void reagirCollision(TypeElement typeAutre) = 0;
 
-        static inline bool estDetruit(std::unique_ptr<ElementEspace>& element) {return element->detruit;};
-
-        float getRayon();
-
     protected:
-        virtual void mettreAJour(const float &temps);
-
+        virtual void mettreAJour(float temps);
         TypeElement type{TypeElement::AUTRE};
-        sf::Texture texture{};
+        bool detruit{false};
         sf::Sprite sprite{};
-        Coordonnees position{};
+        Coordonnees position{400.f, 300.f};
         Vecteur vitesse{0.f, 0.f};
-        float vitesseAngulaire;
-        bool detruit = false;
+        float vitesseAngulaire{};
 };
 
 #endif

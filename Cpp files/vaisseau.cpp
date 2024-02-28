@@ -3,37 +3,33 @@
 #include <iostream>
 
 //constructeur
-Vaisseau::Vaisseau(Jeu& p_jeu, Espace& p_espace, sf::Color const couleur) : ElementEspace{"../images/vaisseau.png"}, espace{p_espace}, jeu{p_jeu} {
+Vaisseau::Vaisseau(Jeu& p_jeu, Espace& p_espace, sf::Color const& couleur) : ElementEspace{"../images/vaisseau.png"}, espace{p_espace}, jeu{p_jeu} {
     type = TypeElement::VAISSEAU;
     sprite.setColor(couleur);
 }
 
 void Vaisseau::actualiserEtat() {
     accelerationEnCours = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-    tourneGauche = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-    tourneDroite = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && dernierTir.getElapsedTime().asSeconds() > 0.5) {
+    tourneAGauche = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+    tourneADroite = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && dernierTir.getElapsedTime().asSeconds() > 0.1) {
         espace.ajouter(std::make_unique<Missile>(position, sprite.getRotation()));
         dernierTir.restart();
     }
 }
 
-void Vaisseau::mettreAJour(const float &temps) {
-
-    Vaisseau::actualiserEtat();
-
+void Vaisseau::mettreAJour(float temps)  {
+    actualiserEtat();
     if(!detruit) {
-        // Pour faire accélerer le vaisseau
         if(accelerationEnCours) {
             vitesse += Vecteur::creerDepuisAngle(ACCELERATION*temps, sprite.getRotation());
         }
-        vitesse -= vitesse*COEFF_FROTTEMENT*temps;
+        vitesse -= vitesse * COEFF_FROTTEMENTS * temps;
 
-        // Pour faire tourner le vaisseau
-        if(tourneDroite) {
-            vitesseAngulaire = VITESSE_ANGULAIRE;
-        } else if (tourneGauche) {
+        if(tourneAGauche) {
             vitesseAngulaire = -VITESSE_ANGULAIRE;
+        } else if(tourneADroite) {
+            vitesseAngulaire = VITESSE_ANGULAIRE;
         } else {
             vitesseAngulaire = 0;
         }
@@ -45,6 +41,5 @@ void Vaisseau::reagirCollision(TypeElement typeAutre) {
         detruit = true;
         jeu.terminer();
         espace.ajouter(std::make_unique<Explosion>(position));
-
     }
 }

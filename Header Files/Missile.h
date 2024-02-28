@@ -10,12 +10,10 @@ class Missile : public ElementEspace {
         virtual void reagirCollision(TypeElement typeAutre) override;
 
     protected:
-        //ee
 
     private:
-        sf::SoundBuffer buffer{};
         sf::Sound son{};
-        static constexpr float VITESSE = 2000;
+        static constexpr float VITESSE{2000.f};
 };
 
 #endif //ASTEROIDJEU_MISSILE_H

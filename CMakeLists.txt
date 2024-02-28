@@ -28,9 +28,11 @@ set(SOURCE_FILES "Cpp files/main.cpp"
         "Header Files/GestionnaireRessources.h"
         "Cpp files/Jeu.cpp"
         "Header Files/Jeu.h"
-        images/font.h
+        "Header Files/font.h"
         "Cpp files/ExceptionRessourcesIntrouvables.cpp"
-        "Header Files/ExceptionRessourcesIntrouvables.h")
+        "Header Files/ExceptionRessourcesIntrouvables.h"
+        "Header Files/GestionnaireRessource.h"
+        "Cpp files/GestionnaireRessource.cpp")
 add_executable(asteroidJeu ${SOURCE_FILES}
         "Cpp files/vaisseau.cpp"
         "Header Files/Vecteur.h"
@@ -54,9 +56,11 @@ add_executable(asteroidJeu ${SOURCE_FILES}
         "Header Files/GestionnaireRessources.h"
         "Cpp files/Jeu.cpp"
         "Header Files/Jeu.h"
-        images/font.h
+        "Header Files/font.h"
         "Cpp files/ExceptionRessourcesIntrouvables.cpp"
-        "Header Files/ExceptionRessourcesIntrouvables.h")
+        "Header Files/ExceptionRessourcesIntrouvables.h"
+        "Header Files/GestionnaireRessource.h"
+        "Cpp files/GestionnaireRessource.cpp")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)
