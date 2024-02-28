@@ -2,6 +2,7 @@
 #define ASTEROIDJEU_MISSILE_H
 
 #include "../Header Files/elementEspace.h"
+#include <SFML/Audio.hpp>
 
 class Missile : public ElementEspace {
     public:

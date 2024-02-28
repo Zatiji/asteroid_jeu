@@ -3,7 +3,7 @@
 #include <iostream>
 
 //constructeur
-Vaisseau::Vaisseau(Espace& p_espace, sf::Color const couleur) : ElementEspace{"../images/vaisseau.png"}, espace{p_espace} {
+Vaisseau::Vaisseau(Jeu& p_jeu, Espace& p_espace, sf::Color const couleur) : ElementEspace{"../images/vaisseau.png"}, espace{p_espace}, jeu{p_jeu} {
     type = TypeElement::VAISSEAU;
     sprite.setColor(couleur);
 }
@@ -43,6 +43,8 @@ void Vaisseau::mettreAJour(const float &temps) {
 void Vaisseau::reagirCollision(TypeElement typeAutre) {
     if(typeAutre == TypeElement::ASTEROIDE) {
         detruit = true;
+        jeu.terminer();
         espace.ajouter(std::make_unique<Explosion>(position));
+
     }
 }

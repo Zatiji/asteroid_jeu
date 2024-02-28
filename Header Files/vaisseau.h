@@ -7,10 +7,11 @@
 #include "../Header Files/elementEspace.h"
 #include "../Header Files/Explosion.h"
 #include "../Header Files/Espace.h"
+#include "../Header Files/Jeu.h"
 
 class Vaisseau : public ElementEspace{
     public:
-        explicit Vaisseau(Espace& p_espace, sf::Color const couleur = sf::Color::White);
+        explicit Vaisseau(Jeu& p_jeu, Espace& p_espace, sf::Color const couleur = sf::Color::White);
         virtual void reagirCollision(TypeElement typeAutre) override;
 
 
@@ -25,6 +26,7 @@ class Vaisseau : public ElementEspace{
         bool accelerationEnCours{false};
         bool tourneGauche{false};
         bool tourneDroite{false};
+        Jeu& jeu;
 
         sf::Clock dernierTir;
 

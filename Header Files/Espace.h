@@ -13,6 +13,7 @@ class Espace {
         void gererCollision();
         void afficher(sf::RenderWindow& fenetre) const;
         void nettoyer();
+        void vider();
 
     protected:
         //ee
@@ -21,5 +22,6 @@ class Espace {
         std::vector<std::unique_ptr<ElementEspace>> elements{};
         sf::Clock chrono{};
         std::vector<std::unique_ptr<ElementEspace>> aAjouter{};
+        bool aVider = false;
 };
 #endif //ASTEROIDJEU_ESPACE_H

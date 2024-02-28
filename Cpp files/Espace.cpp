@@ -38,4 +38,12 @@ void Espace::nettoyer() {
         elements.push_back(std::move(element));
     }
     aAjouter.clear();
+
+    if(aVider) {
+        elements.clear();
+    }
+}
+
+void Espace::vider() {
+    aVider = true;
 }

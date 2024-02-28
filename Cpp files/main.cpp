@@ -1,8 +1,8 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../Header Files/vaisseau.h"
-#include <memory>
-#include "../Header Files/Asteroid.h"
+#include "../Header Files/Jeu.h"
+#include <exception>
+#include <iostream>
 
 using namespace std;
 
@@ -13,35 +13,37 @@ int main() {
 sf::RenderWindow fenetre{sf::VideoMode{LONGUEUR_FENETRE,HAUTEUR_FENETRE}, "Asteroid"};
     Coordonnees::initialiserEspace(LONGUEUR_FENETRE,HAUTEUR_FENETRE);
     auto espace = Espace{};
+    auto jeu = Jeu{espace};
 
     auto pointeurVaisseau = std::unique_ptr<ElementEspace>(nullptr);
 
-    bool partieDemaree = false;
     while(fenetre.isOpen()) {
+        try {
+            auto evenement = sf::Event();
+            while (fenetre.pollEvent(evenement)) {
+                if (evenement.type == sf::Event::Closed) {
+                    fenetre.close();
+                }
+                if (evenement.type == sf::Event::KeyPressed && !jeu.estEnCours()) {
+                    jeu.demarrer();
+                }
+            }
 
-        auto evenement = sf::Event();
-        while(fenetre.pollEvent(evenement)) {
-            if(evenement.type == sf::Event::Closed) {
-                fenetre.close();
-            }
-            if(evenement.type == sf::Event::KeyPressed && !partieDemaree) {
-                espace.ajouter(std::make_unique<Vaisseau>(espace, sf::Color::White));
-                espace.ajouter(std::make_unique<Asteroide>(espace));
-                espace.ajouter(std::make_unique<Asteroide>(espace));
-                espace.ajouter(std::make_unique<Asteroide>(espace));
-                partieDemaree = true;
-            }
+            espace.actualiser();
+            espace.gererCollision();
+
+            fenetre.clear(sf::Color::Black);
+            espace.afficher(fenetre);
+            jeu.afficher(fenetre);
+            fenetre.display();
+
+
+
+            espace.nettoyer();
+
+        } catch(std::exception const exception) {
+            jeu.initialiserException(exception);
         }
-
-        espace.actualiser();
-        espace.gererCollision();
-
-
-        fenetre.clear(sf::Color::Black);
-        espace.afficher(fenetre);
-        fenetre.display();
-
-        espace.nettoyer();
     }
     return 0;
 }
