@@ -47,3 +47,10 @@ void Espace::nettoyer() {
 void Espace::vider() {
     aVider = true;
 }
+
+int Espace::compter(TypeElement type) const {
+    int n = 0;
+    for(auto const& e : elements)
+        if(e->getType() == type) ++n;
+    return n;
+}

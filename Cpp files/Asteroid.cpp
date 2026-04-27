@@ -3,6 +3,7 @@
 #include "../Header Files/Explosion.h"
 #include <random>
 #include <chrono>
+#include <cmath>
 
 
 //constructeur
@@ -28,6 +29,27 @@ Asteroide::Asteroide(Jeu& p_jeu, Espace& p_espace, Asteroide* parent) : ElementE
     } else {
         position = {distributionPosition(generateur), distributionPosition(generateur)};
     }
+}
+
+Asteroide::Asteroide(Jeu& p_jeu, Espace& p_espace, Coordonnees positionDepart, float echelle)
+    : ElementEspace{"../images/asteroide.png"}, jeu{p_jeu}, espace{p_espace} {
+    type = TypeElement::ASTEROIDE;
+
+    auto generateur = std::mt19937{std::random_device{}()};
+    auto distributionVitesse = std::uniform_real_distribution<float>{80.f, 120.f};
+    auto distributionSpread = std::uniform_real_distribution<float>{-70.f, 70.f};
+    auto distributionVitesseAngulaire = std::uniform_real_distribution<float>{10.f, 30.f};
+
+    position = positionDepart;
+    sprite.setScale(echelle, echelle);
+
+    float cx = Coordonnees::getLongueurEspace() / 2.f;
+    float cy = Coordonnees::getHauteurEspace() / 2.f;
+    float dx = cx - positionDepart.getX();
+    float dy = cy - positionDepart.getY();
+    float baseAngle = std::atan2(dy, dx) * 180.f / M_PI;
+    vitesse = Vecteur::creerDepuisAngle(distributionVitesse(generateur), baseAngle + distributionSpread(generateur));
+    vitesseAngulaire = distributionVitesseAngulaire(generateur);
 }
 
 void Asteroide::reagirCollision(TypeElement typeAutre) {

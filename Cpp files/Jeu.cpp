@@ -8,6 +8,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <fstream>
+#include <random>
+#include <algorithm>
 
 using namespace std::string_literals;
 
@@ -34,11 +36,43 @@ Jeu::Jeu(Espace& p_espace) : espace{p_espace} {
 void Jeu::demarrer() {
     enCours = true;
     score = 0;
+    vague = 0;
     rafraichirTexte();
     espace.ajouter(std::make_unique<Vaisseau>(*this, espace, sf::Color::White));
-    espace.ajouter(std::make_unique<Asteroide>(*this, espace));
-    espace.ajouter(std::make_unique<Asteroide>(*this, espace));
-    espace.ajouter(std::make_unique<Asteroide>(*this, espace));
+    spawnerVague();
+}
+
+void Jeu::verifierVague() {
+    if(!enCours) return;
+    if(espace.compter(TypeElement::ASTEROIDE) == 0)
+        spawnerVague();
+}
+
+void Jeu::spawnerVague() {
+    auto generateur = std::mt19937{std::random_device{}()};
+    auto distX = std::uniform_real_distribution<float>{0.f, float(Coordonnees::getLongueurEspace()) - 1.f};
+    auto distY = std::uniform_real_distribution<float>{0.f, float(Coordonnees::getHauteurEspace()) - 1.f};
+    auto distEdge = std::uniform_int_distribution<int>{0, 3};
+
+    int nbMedium = std::min(vague, 5);
+    int nbSmall  = std::min(std::max(0, vague - 2), 6);
+
+    auto spawner = [&](float echelle) {
+        float x, y;
+        switch(distEdge(generateur)) {
+            case 0: x = distX(generateur); y = 0.f; break;
+            case 1: x = float(Coordonnees::getLongueurEspace()) - 1.f; y = distY(generateur); break;
+            case 2: x = distX(generateur); y = float(Coordonnees::getHauteurEspace()) - 1.f; break;
+            default: x = 0.f; y = distY(generateur); break;
+        }
+        espace.ajouter(std::make_unique<Asteroide>(*this, espace, Coordonnees{x, y}, echelle));
+    };
+
+    for(int i = 0; i < 3; ++i)        spawner(1.0f);
+    for(int i = 0; i < nbMedium; ++i) spawner(1.0f / 1.4f);
+    for(int i = 0; i < nbSmall; ++i)  spawner(1.0f / (1.4f * 1.4f));
+
+    ++vague;
 }
 
 void Jeu::terminer() {

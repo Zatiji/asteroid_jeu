@@ -8,6 +8,7 @@
 class Asteroide : public ElementEspace {
     public:
          explicit Asteroide(Jeu& p_jeu, Espace& p_espace, Asteroide* parent = nullptr);
+         Asteroide(Jeu& p_jeu, Espace& p_espace, Coordonnees positionDepart, float echelle);
          virtual void reagirCollision(TypeElement typeAutre) override;
 
     private:

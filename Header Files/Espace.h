@@ -15,6 +15,7 @@ class Espace {
         void afficher(sf::RenderWindow& fenetre) const;
         void nettoyer();
         void vider();
+        int compter(TypeElement type) const;
         inline bool estVide() const {return elements.empty() && aAjouter.empty();};
 
     protected:

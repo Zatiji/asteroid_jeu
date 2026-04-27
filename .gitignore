@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE - JetBrains (CLion)
+.idea/
+
+# CMake build directories
+cmake-build-debug/
+cmake-build-release/
+cmake-build-*/
+build/
+out/
+
+# Compiled binary
+asteroidJeu
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Score save file (local data, not part of the source)
+meilleurScore.txt

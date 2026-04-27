@@ -13,6 +13,7 @@ class Jeu {
         void demarrer();
         void terminer();
         void ajouterPoints(int points);
+        void verifierVague();
         inline bool estEnCours() const { return enCours; };
         void afficher(sf::RenderWindow& fenetre) const;
         void initialiserException(std::exception const& exception);
@@ -22,10 +23,12 @@ class Jeu {
     private:
         void rafraichirTexte();
         void rafraichirMeilleurScore();
+        void spawnerVague();
 
         Espace& espace;
         bool enCours{false};
         int score{};
+        int vague{0};
         int meilleurScore{};
         sf::Text texteScore{};
         sf::Text texteMeilleurScore{};

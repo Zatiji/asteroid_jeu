@@ -63,6 +63,7 @@ add_executable(asteroidJeu ${SOURCE_FILES}
         "Cpp files/GestionnaireRessource.cpp")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
+set(SFML_ROOT "/opt/homebrew/opt/sfml@2")
 find_package(SFML REQUIRED system window graphics network audio)
 if (SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})

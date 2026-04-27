@@ -36,6 +36,7 @@ int main() {
             fenetre.display();
 
             espace.nettoyer();
+            jeu.verifierVague();
         } catch(std::exception const& exception) {
             jeu.initialiserException(exception);
         }

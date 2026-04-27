@@ -17,6 +17,7 @@ class ElementEspace {
         virtual void afficher(sf::RenderWindow& fenetre) const;
 
         inline bool estDetruit() const {return detruit;};
+        inline TypeElement getType() const {return type;};
 
         float getRayon() const;
         void testerCollision(ElementEspace& autre);
